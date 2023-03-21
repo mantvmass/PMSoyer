@@ -6,7 +6,7 @@
     use Illuminati\Http\Request;
     use Exception;
 
-    class Router {
+    class BaseRouter {
 
         /**
          * The config application
