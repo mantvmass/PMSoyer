@@ -1,7 +1,7 @@
 {
     "name": "auduct/framework",
     "description": "The Auduct Framework.",
-    "keywords": ["framework"],
+    "keywords": ["framework", "Auduct Framework", "Auduct"],
     "license": "Apache-2.0",
     "support": {
         "issues": "https://github.com/mantvmass/Auduct-Framework/issues",

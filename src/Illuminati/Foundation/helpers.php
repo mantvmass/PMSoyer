@@ -8,7 +8,7 @@
          * This function render_template
          *
          * @param  string  $name
-         * @param  array|null  $$context
+         * @param  array|null  $context
          */
 
         function render_template($name, array $context = []){
