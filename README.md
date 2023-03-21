@@ -1,5 +1,6 @@
 # Auduct Framework
 PHP Web Framework
+
 ## Installation
 **Composer:** [**Download**](https://getcomposer.org/download/)  
 Create file composer.json in root project and paste the example below
@@ -12,6 +13,8 @@ After that, use the command below to install the framework.
 ```shell
 composer require auduct/framework
 ```
+or install with **Project Structure:** [**Download**](https://github.com/mantvmass/auduct/archive/refs/heads/main.zip) 
+
 ## Donation
 Your donation will help us budget to develop the framework. Thank you.
 - **Thai Bank & E-Payment**
@@ -26,52 +29,78 @@ Your donation will help us budget to develop the framework. Thank you.
   - Dogecoin(Network: DOGE) ```DGq7QhcfQRSovVcGKotJinMNE2ki4bJWdH```
   
 ## Examples
-**Project structure:** [**Download**](https://github.com/mantvmass/auduct/archive/refs/heads/main.zip)  
-**Examples:** [**See**](https://github.com/mantvmass/auduct)  
-Routing
-```php
-  use Illuminati\Routing\Router;
-  
-  $app = new Router();
-  $app::route("/", ["GET", "POST"], function(){
-    echo "Hello World";
-  })
-  // request url = 127.0.0.1/
-  // output Hello World
-  
-  $app::route("/hi/:name", ["GET", "POST"], function(){
-    global $app;
-    echo "Hi " . $app::params["name"];
-  })
-  // request url = 127.0.0.1/hi/Jack
-  // output Hi Jack
-  
-  $app::route("/hi", ["GET", "POST"], function(){
-    global $app;
-    echo "Hi " . $app::params["name"];
-  })
-  // request url = 127.0.0.1/hi?name=Jack
-  // output Hi Jack
-```
-Routing and view
-```php
-  use Illuminati\Routing\Router;
-  use Illuminati\View\View;
+ 
+**Examples:** [**See**](https://github.com/mantvmass/auduct)
 
-  View::$prefix_make = __DIR__ . "/../templates/"; // This setting depends on your project structure.
-  $app = new Router();
-  
-  $app::route("/", ["GET", "POST"], function(){
-    return View::make("index"); // templates/index.php
-  })
+#### Routing
+```php
+    use Illuminati\Auduct;
+    
+    $app = new Auduct();
+
+    $app::route("/", ["GET", "POST"], function(){
+        echo "Hello World";
+    })
+    // request url = 127.0.0.1/
+    // output Hello World
+
+    $app::route("/hi/:name", ["GET", "POST"], function() use($app){
+        echo "Hi " . $app::params["name"];
+    })
+    // request url = 127.0.0.1/hi/Jack
+    // output Hi Jack
+
+    $app::route("/hi", ["GET", "POST"], function() use($app){
+        echo "Hi " . $app::params["name"];
+    })
+    // request url = 127.0.0.1/hi?name=Jack
+    // output Hi Jack
 ```
-### Features
+
+#### Routing and Template ( Twig Mod )
+```php
+    use Illuminati\Auduct;
+
+    $app = new Auduct();
+
+    $app::route('/', ["GET"], function() {
+        return render_template('welcome.html.twig', ['title' => 'Auduct Framework']);
+    });
+```
+
+#### Routing and Template ( Twig Default )
+```php
+    use Illuminati\Auduct;
+    use Illuminati\View\Template;
+    use Illuminati\View\TemplateFileSystemLoader;
+
+    $app = new Auduct();
+
+    $loader = new TemplateFileSystemLoader('templates/');
+    $page = new Template($loader);
+
+    $app::route('/', ["GET"], function() use($app, $page) {
+        echo $page -> render('welcome.html.twig', ['title' => 'Auduct Framework']);
+     });
+```
+
+#### Templates (  Twig Template Engine 3.5.1 )
+> Read More: [Twig Documents](https://twig.symfony.com/doc/3.x/)
+```html
+<!-- welcome.html.twig -->
+<html>
+    <body>
+        <h1> {{ title }} </h1>
+    </body>
+</html>
+```
+
+## Features
 This is only part
 | Class | Constructor |  Function | Parameters | Details |
 | :-------- | :--------: | ---------: | ---------: | ---------: |
-|   Router   |   null   |    route()   |    string, array, callback   | Coming soon |
-|   View   |   null   |    make()   |    string   |  Coming soon |
-|   View   |   null   |    assets()   |    string   |  Coming soon |
+|  Auduct   |   $templates_path   |    route()   |    string, array, callback   | Coming soon |
+|  -------  |   null   |    render_template()   |    string, array   |  Coming soon |
 
 ## License
 [Apache License, version 2.0](https://github.com/mantvmass/Auduct/blob/main/LICENSE.md)
