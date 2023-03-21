@@ -1,6 +1,6 @@
 <?php
 
-    namespace Illuminati\App;
+    namespace Illuminati\Main;
 
     use Illuminati\Routing\BaseRouter;
 
