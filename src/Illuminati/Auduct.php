@@ -1,13 +1,11 @@
 <?php
 
-    namespace Illuminati\Main;
+    namespace Illuminati;
 
     use Illuminati\Routing\BaseRouter;
 
-    class Auduct {
+    class Auduct extends BaseRouter{
 
-        use BaseRouter;
-        
         // This class use BaseRouter
 
     }
