@@ -12,9 +12,9 @@
          */
 
         function render_template($name, array $context = []){
-            $loader = new TemplateFileSystemLoader($GLOBALS["templates_path"]);
+            $loader = new TemplateFileSystemLoader(__DIR__ . "/../../../../../../" . $GLOBALS["templates_path"]);
             $page = new Template($loader);
-            return $page -> render($name, $context);
+            echo $page -> render($name, $context);
         }
     }
 
