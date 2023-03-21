@@ -1,0 +1,25 @@
+{
+    "name": "auduct/framework",
+    "description": "The Auduct Framework.",
+    "keywords": ["framework"],
+    "license": "Apache-2.0",
+    "support": {
+        "issues": "https://github.com/mantvmass/Auduct-Framework/issues",
+        "source": "https://github.com/mantvmass/Auduct-Framework"
+    },
+    "authors": [
+        {
+            "name": "Phumin Maliwan",
+            "email": "kliop2317@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Illuminati\\": "src/Illuminati"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.5.1"
+    },
+    "minimum-stability": "dev"
+}
