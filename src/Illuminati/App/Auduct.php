@@ -4,8 +4,10 @@
 
     use Illuminati\Routing\BaseRouter;
 
-    class Auduct extends BaseRouter {
+    class Auduct {
 
+        use BaseRouter;
+        
         // This class use BaseRouter
 
     }
