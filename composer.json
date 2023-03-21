@@ -16,7 +16,10 @@
     "autoload": {
         "psr-4": {
             "Illuminati\\": "src/Illuminati"
-        }
+        },
+        "files": [
+            "src/Illuminati/Foundation/helpers.php"
+        ]
     },
     "require": {
         "twig/twig": "^3.5.1"
