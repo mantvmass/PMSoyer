@@ -72,7 +72,7 @@
 
         function abort(int $statusCode, string $message = '') {
             app::handleException($statusCode, $message);
-            return;
+            die();
         }
     }
 
@@ -87,6 +87,6 @@
             http_response_code($statusCode);
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode($data);
-            return;
+            die();
         }
     }
