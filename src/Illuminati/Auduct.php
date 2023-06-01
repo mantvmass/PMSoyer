@@ -4,12 +4,15 @@
 
     use Illuminati\Routing\BaseRouter;
 
+
+    // This class use BaseRouter
     class Auduct extends BaseRouter{
 
-        // This class use BaseRouter
-
-        public function __construct($templates_path="templates/") {
-            $GLOBALS["templates_path"] = $templates_path;
-        }
+        /**
+         * The config application
+         * 
+         * @var array|null
+         */
+        public static $config = [];
 
     }
