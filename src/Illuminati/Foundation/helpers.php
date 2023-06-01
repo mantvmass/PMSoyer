@@ -12,7 +12,7 @@
          * @param  array|null  $context
          */
 
-        function render_template($name, array $context = []){
+        function render_template(string $name, array $context = []){
             $templates_path = isset(app::$config["TEMPLATES_PATH"]) ? app::$config["TEMPLATES_PATH"] : "templates/";
             $loader = new TemplateFileSystemLoader(__DIR__ . "/../../../../../../" . $templates_path);
             $page = new Template($loader);
@@ -29,7 +29,7 @@
          * @param  int  $status
          */
 
-        function redirect($to = null, $status = 302){
+        function redirect(string $to = null, int $status = 302){
             return header("Location: $to", true, $status);
         }
     }
@@ -40,7 +40,7 @@
          * @param  int  $code
          * @param  string|null  $message
          */
-        function abort($code, $message = '') {
+        function abort(int $code, string $message = '') {
             app::handleException($code, $message);
             return;
         }
