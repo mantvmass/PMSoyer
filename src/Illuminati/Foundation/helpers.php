@@ -1,6 +1,6 @@
 <?php
 
-    use Illuminati\Routing\BaseRouter;
+    use Illuminati\Auduct as app;
     use Illuminati\View\Template;
     use Illuminati\View\TemplateFileSystemLoader;
 
@@ -13,7 +13,8 @@
          */
 
         function render_template($name, array $context = []){
-            $loader = new TemplateFileSystemLoader(__DIR__ . "/../../../../../../" . $GLOBALS["templates_path"]);
+            $templates_path = isset(app::$config["TEMPLATES_PATH"]) ? app::$config["TEMPLATES_PATH"] : "templates/";
+            $loader = new TemplateFileSystemLoader(__DIR__ . "/../../../../../../" . $templates_path);
             $page = new Template($loader);
             echo $page -> render($name, $context);
             return;
@@ -40,7 +41,7 @@
          * @param  string|null  $message
          */
         function abort($code, $message = '') {
-            BaseRouter::handleException($code, $message);
+            app::handleException($code, $message);
             return;
         }
     }
