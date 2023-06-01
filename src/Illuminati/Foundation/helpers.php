@@ -26,22 +26,22 @@
          * Get an instance of the redirector.
          *
          * @param  string|null  $to
-         * @param  int  $status
+         * @param  int  $statusCode
          */
 
-        function redirect(string $to = null, int $status = 302){
-            return header("Location: $to", true, $status);
+        function redirect(string $to = null, int $statusCode = 302){
+            return header("Location: $to", true, $statusCode);
         }
     }
 
     if (!function_exists('abort')) {
         /**
          * The abort function.
-         * @param  int  $code
+         * @param  int  $statusCode
          * @param  string|null  $message
          */
-        function abort(int $code, string $message = '') {
-            app::handleException($code, $message);
+        function abort(int $statusCode, string $message = '') {
+            app::handleException($statusCode, $message);
             return;
         }
     }
