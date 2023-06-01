@@ -40,12 +40,11 @@
          *
          * @param  array  $data
          * @param  int  $statusCode
-         * @param  string  $contentType
          */
 
-        function jsonify(array $data, int $statusCode = 200, string $contentType = 'application/json'){
+        function jsonify(array $data, int $statusCode = 200){
             http_response_code($statusCode);
-            header('Content-Type: ' . $contentType . '; charset=utf-8');
+            header('Content-Type: application/json; charset=utf-8');
             echo json_encode($data);
             return;
         }
