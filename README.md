@@ -129,30 +129,30 @@ This is only part
 - ClassConstructor: **No**
 - ClassGlobalParams: **No**
 
-|      Method         |           ParamType         |           Param              |  Details     |
-|     :--------       |           --------          |         ---------:           |  ---------:  |
-|      route()        |   string, array, callable   |   $path, $methods, $func     |  Coming soon |
-|   errorHandler()    |        int, callable        |     $statusCode, $func       |  Coming soon |
-|      listen()       |        string, string       |        $path, $method        |  Coming soon |
+|      Method         |           ParamType         |           Param              |  Details                   |
+|     :--------       |           --------          |         ---------:           |  ---------:                |
+|      route()        |   string, array, callable   |   $path, $methods, $func     |  add route                 |
+|   errorHandler()    |        int, callable        |     $statusCode, $func       |  add errorHandler          |
+|      listen()       |        string, string       |        $path, $method        |  listen and map route      |
 
 "-------------------------------------------------------------------------------------------------"
 - ClassName: **Request**
 - ClassConstructor: **No**
 - ClassGlobalParams: **string: $method, string: $path, string: $full_path, array: $form, array: $args, array: $files**
 
-|      Method         |           ParamType         |           Param              |  Details     |
-|     :--------       |           --------          |         ---------:           |  ---------:  |
-|   handleRequest()   |               -             |              -               |  Coming soon |
+|      Method         |           ParamType         |           Param              |  Details                                   |
+|     :--------       |           --------          |         ---------:           |  ---------:                                |
+|   handleRequest()   |               -             |              -               |  update request data for ClassGlobalParams |
 
 "-------------------------------------------------------------------------------------------------"
 
 - Other functions that are not in the class
 
-|      Function       |           ParamType         |           Param              |  Details     |
-|     :--------       |           --------          |         ---------:           |  ---------:  |
-|  render_template()  |         string, array       |       $name, $context        |  Coming soon |
-|     redirect()      |          string, int        |      $to, $statusCode        |  Coming soon |
-|     jsonify()       |          array, int         |      $data, $statusCode      |  Coming soon |
+|      Function       |           ParamType         |           Param              |  Details                          |
+|     :--------       |           --------          |         ---------:           |  ---------:                       |
+|  render_template()  |         string, array       |       $name, $context        |  render (twig framework)          |
+|     redirect()      |          string, int        |      $to, $statusCode        |  redirect to other route          |
+|     jsonify()       |          array, int         |      $data, $statusCode      |  return json data and statuc code |
 |      abort()        |          int, string        |    $statusCode, message      |  Coming soon |
 |   abortWithJson()   |           int, array        |      $statusCode, $data      |  Coming soon |
 
