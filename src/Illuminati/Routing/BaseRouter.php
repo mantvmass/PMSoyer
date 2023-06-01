@@ -3,29 +3,40 @@
 
     namespace Illuminati\Routing;
 
+
     use ReflectionFunction;
     use Exception;
 
+
+    /**
+     * This is class main router
+     * 
+     */
     class BaseRouter {
 
-        /**
-         * The config application
-         * 
-         * @var array|null
-         */
-        public static $config = [];
 
         /**
-         * The parameters for get methods
+         * This route from application
          * 
          * @var array|null
          */
-        // private $access_methods = ["GET", "POST", "HEAD"];
         private static $routes = [];
+
+
+        /**
+         * This errorHandlers from application
+         * 
+         * @var array|null
+         */
         private static $errorHandlers = [];
 
 
-        // Method for checking for duplicate paths
+        /**
+         * Method for checking for duplicate paths
+         * 
+         * @param string $path
+         * @param string $method
+         */
         private static function checkDuplicateRoute($path, $method) {
             foreach (self::$routes as $route) {
                 if ($route["path"] == $path && in_array($method, $route["methods"])) {
@@ -35,7 +46,13 @@
         }
 
 
-        // Add Route Function
+        /**
+         * Add route function
+         * 
+         * @param string $path
+         * @param array $method
+         * @param function $handler
+         */
         public static function route($path, $methods, $handler) {
 
             foreach ($methods as $method) {
@@ -57,11 +74,23 @@
         }
 
 
+        /**
+         * Add errorHandler function
+         * 
+         * @param int $statusCode
+         * @param Closure $handler
+         */
         public static function errorHandler($statusCode, $handler) {
-            self::$errorHandlers[$statusCode] = $handler; // Add errorHandler
+            self::$errorHandlers[$statusCode] = $handler;
         }
 
 
+        /**
+         * handleException function
+         * 
+         * @param int $statusCode
+         * @param string $message
+         */
         public static function handleException($statusCode, $message) {
             if (isset(self::$errorHandlers[$statusCode])) {
                 $handler = self::$errorHandlers[$statusCode];
@@ -75,6 +104,11 @@
         }
 
 
+        /**
+         * convertToRegex function
+         * 
+         * @param string $path
+         */
         private static function convertToRegex($path) {
             // Convert route path to regular expression
             $regex = preg_replace('/\<(\w+)\>/', '(?P<$1>[^\/]+)', $path);
@@ -83,7 +117,13 @@
         }
 
 
-        private static function getParams($params_from_route, $function) { // get params from router: /hi/<name>
+        /**
+         * getParams function | get params from router: /hi/<name>
+         * 
+         * @param array $params_from_route
+         * @param Closure|string $function
+         */
+        private static function getParams($params_from_route, $function) {
             $reflection = new ReflectionFunction($function);
             $params = $reflection->getParameters();
             $resolvedParams = [];
@@ -97,6 +137,12 @@
         }
 
 
+        /**
+         * listen function
+         * 
+         * @param string $path
+         * @param array $method
+         */
         public static function listen($path, $method) { // recieve request
             foreach (self::$routes as $route) {
                 // Check if the route path and method match the request
