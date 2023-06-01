@@ -40,7 +40,7 @@ Your donation will help us budget to develop the framework. Thank you.
  
 **Project Example:** [**See**](https://github.com/mantvmass/auduct)
 
-#### Basic Routing
+#### Routing
 ```php
     use Illuminati\Auduct as app;
     use Illuminati\Http\Request as request;
@@ -57,7 +57,7 @@ Your donation will help us budget to develop the framework. Thank you.
     // req: 127.0.0.1:5000/mantvmass/setting
     // res: mantvmass
 
-	app::route('/admin/panel', ["GET", "POST"], function(){
+    app::route('/admin/panel', ["GET", "POST"], function(){
         $role = false;
         if(!$role){
             abort(403, "Forbidden");
@@ -127,7 +127,7 @@ This is only part
 "-------------------------------------------------------------------------------------------------"
 - ClassName: **Auduct**
 - ClassConstructor: **No**
-- ClassGlobalParms: **No**
+- ClassGlobalParams: **No**
 
 |      Method         |           ParamType         |           Param              |  Details     |
 |     :--------       |           --------          |         ---------:           |  ---------:  |
@@ -138,7 +138,7 @@ This is only part
 "-------------------------------------------------------------------------------------------------"
 - ClassName: **Request**
 - ClassConstructor: **No**
-- ClassGlobalParms: **string: $method, string: $path, string: $full_path, array: $form, array: $args, array: $files**
+- ClassGlobalParams: **string: $method, string: $path, string: $full_path, array: $form, array: $args, array: $files**
 
 |      Method         |           ParamType         |           Param              |  Details     |
 |     :--------       |           --------          |         ---------:           |  ---------:  |
