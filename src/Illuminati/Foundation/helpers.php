@@ -1,5 +1,6 @@
 <?php
 
+    use Illuminati\Routing\BaseRouter;
     use Illuminati\View\Template;
     use Illuminati\View\TemplateFileSystemLoader;
 
@@ -15,6 +16,7 @@
             $loader = new TemplateFileSystemLoader(__DIR__ . "/../../../../../../" . $GLOBALS["templates_path"]);
             $page = new Template($loader);
             echo $page -> render($name, $context);
+            return;
         }
     }
 
@@ -28,5 +30,17 @@
 
         function redirect($to = null, $status = 302){
             return header("Location: $to", true, $status);
+        }
+    }
+
+    if (!function_exists('abort')) {
+        /**
+         * The abort function.
+         * @param  int  $code
+         * @param  string|null  $message
+         */
+        function abort($code, $message = '') {
+            BaseRouter::handleException($code, $message);
+            return;
         }
     }
