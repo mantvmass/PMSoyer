@@ -37,7 +37,7 @@
          * @param string $path
          * @param string $method
          */
-        private static function checkDuplicateRoute($path, $method) {
+        private static function checkDuplicateRoute(string $path, string $method) {
             foreach (self::$routes as $route) {
                 if ($route["path"] == $path && in_array($method, $route["methods"])) {
                     throw new Exception("Duplicate route: $path [$method]");
@@ -51,9 +51,9 @@
          * 
          * @param string $path
          * @param array $method
-         * @param function $handler
+         * @param callable $handler
          */
-        public static function route($path, $methods, $handler) {
+        public static function route(string $path, array $methods, callable $handler) {
 
             foreach ($methods as $method) {
                 // Call the method to check for duplicate paths
@@ -78,9 +78,9 @@
          * Add errorHandler function
          * 
          * @param int $statusCode
-         * @param Closure $handler
+         * @param callable $handler
          */
-        public static function errorHandler($statusCode, $handler) {
+        public static function errorHandler(int $statusCode, callable $handler) {
             self::$errorHandlers[$statusCode] = $handler;
         }
 
@@ -91,7 +91,7 @@
          * @param int $statusCode
          * @param string $message
          */
-        public static function handleException($statusCode, $message) {
+        public static function handleException(int $statusCode, string $message) {
             if (isset(self::$errorHandlers[$statusCode])) {
                 $handler = self::$errorHandlers[$statusCode];
                 http_response_code($statusCode);
@@ -109,7 +109,7 @@
          * 
          * @param string $path
          */
-        private static function convertToRegex($path) {
+        private static function convertToRegex(string $path) {
             // Convert route path to regular expression
             $regex = preg_replace('/\<(\w+)\>/', '(?P<$1>[^\/]+)', $path);
             $regex = '#^' . str_replace('/', '\/', $regex) . '$#';
@@ -121,9 +121,9 @@
          * getParams function | get params from router: /hi/<name>
          * 
          * @param array $params_from_route
-         * @param Closure|string $function
+         * @param callable $function
          */
-        private static function getParams($params_from_route, $function) {
+        private static function getParams(array $params_from_route, callable $function) {
             $reflection = new ReflectionFunction($function);
             $params = $reflection->getParameters();
             $resolvedParams = [];
@@ -141,9 +141,9 @@
          * listen function
          * 
          * @param string $path
-         * @param array $method
+         * @param string $method
          */
-        public static function listen($path, $method) { // recieve request
+        public static function listen(string $path, string $method) { // recieve request
             foreach (self::$routes as $route) {
                 // Check if the route path and method match the request
                 if (preg_match($route['regex'], $path, $matches) && in_array($method, $route['methods'])) {
