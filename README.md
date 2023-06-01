@@ -152,7 +152,9 @@ This is only part
 |     :--------       |           --------          |         ---------:           |  ---------:  |
 |  render_template()  |         string, array       |       $name, $context        |  Coming soon |
 |     redirect()      |          string, int        |      $to, $statusCode        |  Coming soon |
+|     jsonify()       |          array, int         |      $data, $statusCode      |  Coming soon |
 |      abort()        |          int, string        |    $statusCode, message      |  Coming soon |
+|   abortWithJson()   |           int, array        |      $statusCode, $data      |  Coming soon |
 
 
 ## License
