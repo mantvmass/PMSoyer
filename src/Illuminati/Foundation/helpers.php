@@ -1,8 +1,8 @@
 <?php
 
-    use Illuminati\Auduct as app;
-    use Illuminati\View\Template;
-    use Illuminati\View\TemplateFileSystemLoader;
+    use Soyer\Auduct as app;
+    use Soyer\View\Template;
+    use Soyer\View\TemplateFileSystemLoader;
 
     if (!function_exists('render_template')) {
         /**

@@ -1,12 +1,12 @@
 <?php
 
-    namespace Illuminati;
+    namespace Soyer;
 
-    use Illuminati\Routing\BaseRouter;
+    use Soyer\Routing\BaseRouter;
 
 
     // This class use BaseRouter
-    class Auduct extends BaseRouter{
+    class PMSoyer extends BaseRouter{
 
         /**
          * The config application

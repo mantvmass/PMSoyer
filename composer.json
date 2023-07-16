@@ -15,10 +15,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "Illuminati\\": "src/Illuminati"
+            "Illuminati\\": "src/Soyer"
         },
         "files": [
-            "src/Illuminati/Foundation/helpers.php"
+            "src/Soyer/Foundation/helpers.php"
         ]
     },
     "require": {

@@ -1,7 +1,7 @@
 <?php
 
 
-    namespace Illuminati\Http;
+    namespace Soyer\Http;
 
     class Request {
 

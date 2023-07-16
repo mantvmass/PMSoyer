@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminati\View;
+namespace Soyer\View;
 
 use Twig\Loader\FilesystemLoader;
 

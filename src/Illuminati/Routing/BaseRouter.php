@@ -1,7 +1,7 @@
 <?php
 
 
-    namespace Illuminati\Routing;
+    namespace Soyer\Routing;
 
 
     use ReflectionFunction;
