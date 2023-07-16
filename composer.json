@@ -1,11 +1,11 @@
 {
-    "name": "auduct/framework",
-    "description": "The Auduct Framework.",
-    "keywords": ["framework", "Auduct Framework", "Auduct"],
+    "name": "PMSoyer/framework",
+    "description": "The PMSoyer Framework.",
+    "keywords": ["framework", "PMSoyer Framework", "PMSoyer"],
     "license": "Apache-2.0",
     "support": {
-        "issues": "https://github.com/mantvmass/Auduct-Framework/issues",
-        "source": "https://github.com/mantvmass/Auduct-Framework"
+        "issues": "https://github.com/mantvmass/PMSoyer/issues",
+        "source": "https://github.com/mantvmass/PMSoyer"
     },
     "authors": [
         {
