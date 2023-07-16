@@ -1,11 +1,11 @@
-# Auduct Framework
-![GitHub](https://img.shields.io/github/license/mantvmass/auduct-framework)
+# PMSoyer Framework
+![GitHub](https://img.shields.io/github/license/mantvmass/PMSoyer)
 <img src="https://img.shields.io/badge/PHP-7.4.30-blue">
 
 
 This is a PHP Web framework, Quick and easy to use.
 
-> <h2>Illuminati</h2><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Illuminati_triangle_eye.png/576px-Illuminati_triangle_eye.png" width="180" >
+> package: Soyer
 
 ## Required
 - Twig Template Engine 3.5.1
@@ -20,7 +20,7 @@ Create file composer.json in root project and paste the example below
 ```
 After that, use the command below to install the framework.
 ```shell
-composer require auduct/framework
+composer require PMSoyer/framework
 ```
 or install with **Project Structure:** [**Download**](https://github.com/mantvmass/auduct/archive/refs/heads/main.zip) 
 
@@ -42,8 +42,8 @@ Your donation will help us budget to develop the framework. Thank you.
 
 #### Routing
 ```php
-    use Illuminati\Auduct as app;
-    use Illuminati\Http\Request as request;
+    use Soyer\PMSoyer as app;
+    use Soyer\Http\Request as request;
 
     app::route('/', ["GET"], function() {
         echo "Hello World!"
@@ -89,25 +89,25 @@ Your donation will help us budget to develop the framework. Thank you.
 
 #### Basic Template
 ```php
-    use Illuminati\Auduct as app;
-    use Illuminati\Http\Request as request;
+    use Soyer\PMSoyer as app;
+    use Soyer\Http\Request as request;
 
     app::route('/', ["GET"], function() {
-        return render_template('welcome.twig', ['title' => 'Auduct Framework']);
+        return render_template('welcome.twig', ['title' => 'PMSoyer Framework']);
     });
 ```
 
 #### Routing and Template ( Twig Default )
 ```php
-    use Illuminati\Auduct as app;
-    use Illuminati\View\Template;
-    use Illuminati\View\TemplateFileSystemLoader;
+    use Soyer\PMSoyer as app;
+    use Soyer\View\Template;
+    use Soyer\View\TemplateFileSystemLoader;
 
     $loader = new TemplateFileSystemLoader('templates/');
     $page = new Template($loader);
 
     app::route('/', ["GET"], function() use($page) {
-        echo $page -> render('welcome.twig', ['title' => 'Auduct Framework']);
+        echo $page -> render('welcome.twig', ['title' => 'PMSoyer Framework']);
     });
 ```
 
@@ -125,7 +125,7 @@ Your donation will help us budget to develop the framework. Thank you.
 ## Features
 This is only part  
 "-------------------------------------------------------------------------------------------------"
-- ClassName: **Auduct**
+- ClassName: **PMSoyer**
 - ClassConstructor: **No**
 - ClassGlobalParams: **No**
 
@@ -158,4 +158,4 @@ This is only part
 
 
 ## License
-[Apache License, version 2.0](https://github.com/mantvmass/Auduct/blob/main/LICENSE.md)
+[Apache License, version 2.0](https://github.com/mantvmass/PMSoyer/blob/main/LICENSE.md)
