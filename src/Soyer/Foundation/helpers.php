@@ -1,6 +1,6 @@
 <?php
 
-    use Soyer\Auduct as app;
+    use Soyer\PMSoyer as app;
     use Soyer\View\Template;
     use Soyer\View\TemplateFileSystemLoader;
 
