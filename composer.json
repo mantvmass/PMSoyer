@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Illuminati\\": "src/Soyer"
+            "Soyer\\": "src/Soyer"
         },
         "files": [
             "src/Soyer/Foundation/helpers.php"
