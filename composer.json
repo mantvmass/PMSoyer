@@ -24,5 +24,6 @@
     "require": {
         "twig/twig": "^3.5.1"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

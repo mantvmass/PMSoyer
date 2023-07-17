@@ -7,22 +7,12 @@ This is a PHP Web framework, Quick and easy to use.
 
 > package: Soyer
 
-## Required
-- Twig Template Engine 3.5.1
-
 ## Installation
 **Composer:** [**Download**](https://getcomposer.org/download/)  
-Create file composer.json in root project and paste the example below
-```json
-{
-  "minimum-stability": "dev"
-}
-```
-After that, use the command below to install the framework.
+
 ```shell
-composer require PMSoyer/framework
+composer require soyer/framework -s dev
 ```
-or install with **Project Structure:** [**Download**](https://github.com/mantvmass/auduct/archive/refs/heads/main.zip) 
 
 ## Donation
 Your donation will help us budget to develop the framework. Thank you.
@@ -30,15 +20,13 @@ Your donation will help us budget to develop the framework. Thank you.
   - Kasikorn Bank ```0608905863```
 - **Cryptocurrency Wallet**
   - USDT ( Network: BEP20 ) ```0x2d0db066a033361bcb709976104eede3443415a4```
-  - Ethereum ( Network: ERC20 ) ```0x2d0db066a033361bcb709976104eede3443415a4```
   - Bitcoin ( Network: BTC ) ```1Kxj79HHV87ENyYB4Fvmdwu2pvacfKvFPx```
   - BNB ( Network: BEP20 ) ```0x2d0db066a033361bcb709976104eede3443415a4```
-  - Monero ( Network: XMR ) ```8ARwh4HUH2Z7DCAwWyEHwD5p3wsTnUX65PKdpSZqAH2deh9wsnp4pQ256HLKpxeDxwfkrLfEFSYNv5aKruED8Mi416tx6RD```
-  - Dogecoin ( Network: DOGE ) ```DGq7QhcfQRSovVcGKotJinMNE2ki4bJWdH```
+
   
 ## Guide 
  
-**Project Example:** [**See**](https://github.com/mantvmass/auduct)
+**Docs:** [**soon**](https://github.com/PMSoyer)
 
 #### Routing
 ```php
@@ -155,7 +143,3 @@ This is only part
 |     jsonify()       |          array, int         |      $data, $statusCode      |  return json data and statuc code |
 |      abort()        |          int, string        |    $statusCode, message      |  Coming soon |
 |   abortWithJson()   |           int, array        |      $statusCode, $data      |  Coming soon |
-
-
-## License
-[MIT License](https://github.com/mantvmass/PMSoyer/blob/main/LICENSE)
