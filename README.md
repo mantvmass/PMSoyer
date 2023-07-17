@@ -158,4 +158,4 @@ This is only part
 
 
 ## License
-[Apache License, version 2.0](https://github.com/mantvmass/PMSoyer/blob/main/LICENSE.md)
+[MIT License](https://github.com/mantvmass/PMSoyer/blob/main/LICENSE)

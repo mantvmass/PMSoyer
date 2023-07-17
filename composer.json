@@ -2,7 +2,7 @@
     "name": "soyer/framework",
     "description": "The PMSoyer Framework.",
     "keywords": ["framework", "PMSoyer Framework", "PMSoyer"],
-    "license": "Apache-2.0",
+    "license": "MIT",
     "support": {
         "issues": "https://github.com/mantvmass/PMSoyer/issues",
         "source": "https://github.com/mantvmass/PMSoyer"
