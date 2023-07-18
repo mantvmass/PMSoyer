@@ -158,26 +158,21 @@
                     $handler = $route['handler'];
                     $middlewares = $route['middlewares'];
 
-                    // call middlewares
-                    foreach ($middlewares as $middleware) {
-                        // if (is_callable($middleware[0])) { // function middleware
-                        //     $middleware[0]();
-                        // } else { // class middleware
-                        //     $middlewareClass = $middleware[0];
-                        //     $middlewareMethod = $middleware[1];
-                        //     $middlewareClass::$middlewareMethod();
-                        // }
-
-                        // call class middleware only
-                        $middlewareClass = $middleware;
-                        $middlewareClass::handle();
-                        
-                    }
-
                     // Combine route params and additional params
                     $params = [];
                     $params = array_merge($matches, $params);
                     $params = self::getParams($params, $handler);
+
+                    // call middlewares
+                    foreach ($middlewares as $middleware) {
+                        if (is_callable($middleware[0])) { // function middleware
+                            $middleware[0]();
+                        } else { // class middleware
+                            $middlewareClass = $middleware[0];
+                            $middlewareMethod = $middleware[1];
+                            $middlewareClass::$middlewareMethod($handler(...$params)); // call middleware and send handler function
+                        }
+                    }
 
                     // Call the route handler function with the params
                     $handler(...$params);
