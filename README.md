@@ -1,6 +1,6 @@
-<p align="center" style="font-size: 33px; font-weight: bold;">
+<h1 align="center">
     PMSoyer Framework
-</p>
+</h1>
 
 <p align="center">
     <a href="https://packagist.org/packages/soyer/framework">
