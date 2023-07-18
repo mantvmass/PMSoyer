@@ -1,18 +1,32 @@
-# PMSoyer Framework
-![GitHub](https://img.shields.io/github/license/mantvmass/PMSoyer)
-<img src="https://img.shields.io/badge/PHP-7.4.30-blue">
+<h1 align="center">
+    PMSoyer Framework
+</1h>
 
+<p align="center">
+    <a href="https://packagist.org/packages/soyer/framework">
+        <img src="https://img.shields.io/packagist/dt/soyer/framework" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/soyer/framework">
+        <img src="https://img.shields.io/packagist/v/soyer/framework" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/soyer/framework">
+        <img src="https://img.shields.io/badge/PHP-7.4.30-blue" alt="PHP Version">
+    </a>
+    <a href="https://packagist.org/packages/soyer/framework">
+        <img src="https://img.shields.io/github/license/mantvmass/PMSoyer" alt="License">
+    </a>
+</p>
+
+
+## About PMSoyer
 
 This is a PHP Web framework, Quick and easy to use.
 
-> package: Soyer
 
-## Installation
-**Composer:** [**Download**](https://getcomposer.org/download/)  
-
+<!-- ## Installation
 ```shell
 composer require soyer/framework -s dev
-```
+``` -->
 
 ## Donation
 Your donation will help us budget to develop the framework. Thank you.
@@ -75,27 +89,45 @@ Your donation will help us budget to develop the framework. Thank you.
     app::listen(request::$path, request::$method);
 ```
 
-#### Basic Template
+#### Routing and Middleware
+```php
+    use Soyer\PMSoyer as app;
+    use Soyer\Http\Request as request;
+
+
+    // function middleware
+    $func_isLogin = function () {
+        abort(401, "Unauthorized");
+    }
+    app::route('/function', ["GET"], function() {
+        echo "Hello World";
+    }, [ [$func_isLogin] ]);
+
+
+    // class middleware
+    class ClassAuth {
+        public static function isLogin(){
+            abort(401, "Unauthorized");
+        }
+    }
+    app::route('/class', ["GET"], function() {
+        echo "Hello World";
+    }, [ [ClassAuth::class, "isLogin"] ]);
+
+
+    // multiple use
+    app::route('/class', ["GET"], function() {
+        echo "Hello World";
+    }, [ [$func_isLogin], [ClassAuth::class, "isLogin"] ]);
+```
+
+#### Routing and Template
 ```php
     use Soyer\PMSoyer as app;
     use Soyer\Http\Request as request;
 
     app::route('/', ["GET"], function() {
         return render_template('welcome.twig', ['title' => 'PMSoyer Framework']);
-    });
-```
-
-#### Routing and Template ( Twig Default )
-```php
-    use Soyer\PMSoyer as app;
-    use Soyer\View\Template;
-    use Soyer\View\TemplateFileSystemLoader;
-
-    $loader = new TemplateFileSystemLoader('templates/');
-    $page = new Template($loader);
-
-    app::route('/', ["GET"], function() use($page) {
-        echo $page -> render('welcome.twig', ['title' => 'PMSoyer Framework']);
     });
 ```
 
@@ -110,36 +142,5 @@ Your donation will help us budget to develop the framework. Thank you.
 </html>
 ```
 
-## Features
-This is only part  
-"-------------------------------------------------------------------------------------------------"
-- ClassName: **PMSoyer**
-- ClassConstructor: **No**
-- ClassGlobalParams: **No**
-
-|      Method         |           ParamType         |           Param              |  Details                   |
-|     :--------       |           --------          |         ---------:           |  ---------:                |
-|      route()        |   string, array, callable   |   $path, $methods, $func     |  add route                 |
-|   errorHandler()    |        int, callable        |     $statusCode, $func       |  add errorHandler          |
-|      listen()       |        string, string       |        $path, $method        |  listen and map route      |
-
-"-------------------------------------------------------------------------------------------------"
-- ClassName: **Request**
-- ClassConstructor: **No**
-- ClassGlobalParams: **string: $method, string: $path, string: $full_path, array: $form, array: $args, array: $files**
-
-|      Method         |           ParamType         |           Param              |  Details                                   |
-|     :--------       |           --------          |         ---------:           |  ---------:                                |
-|   handleRequest()   |               -             |              -               |  update request data for ClassGlobalParams |
-
-"-------------------------------------------------------------------------------------------------"
-
-- Other functions that are not in the class
-
-|      Function       |           ParamType         |           Param              |  Details                          |
-|     :--------       |           --------          |         ---------:           |  ---------:                       |
-|  render_template()  |         string, array       |       $name, $context        |  render (twig framework)          |
-|     redirect()      |          string, int        |      $to, $statusCode        |  redirect to other route          |
-|     jsonify()       |          array, int         |      $data, $statusCode      |  return json data and statuc code |
-|      abort()        |          int, string        |    $statusCode, message      |  Coming soon |
-|   abortWithJson()   |           int, array        |      $statusCode, $data      |  Coming soon |
+## License
+The PMSoyer framework is open-sourced software licensed under the [MIT license](https://github.com/mantvmass/PMSoyer/blob/main/LICENSE).
