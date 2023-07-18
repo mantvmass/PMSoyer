@@ -170,7 +170,7 @@
                         } else { // class middleware
                             $middlewareClass = $middleware[0];
                             $middlewareMethod = $middleware[1];
-                            $middlewareClass::$middlewareMethod($handler(...$params)); // call middleware and send handler function
+                            $middlewareClass::handle($handler(...$params)); // call handle from middleware and send handler function
                         }
                     }
 
