@@ -23,13 +23,14 @@ This is a PHP Web framework, Quick and easy to use.
 
 
 ## Donate
-<a href="https://github.com/sponsors/mantvmass">
-    <img src="https://img.shields.io/badge/Sponsor-GitHub-b60abf.svg" alt="Sponsor">
-</a>
-<img src="https://img.shields.io/badge/Kasikorn_Bank-0608905863-08a103.svg" alt="Sponsor">
+<p>
+    <a href="https://github.com/sponsors/mantvmass">
+        <img src="https://img.shields.io/badge/Sponsor-GitHub-b60abf.svg" alt="Sponsor">
+    </a>
+    <img src="https://img.shields.io/badge/Kasikorn_Bank-0608905863-08a103.svg" alt="Sponsor">
 
-Thanks for your support! 🎉
-
+    Thanks for your support! 🎉
+</p>
 
 ## License
 The PMSoyer framework is open-sourced software licensed under the [MIT license](https://github.com/mantvmass/PMSoyer/blob/main/LICENSE).
