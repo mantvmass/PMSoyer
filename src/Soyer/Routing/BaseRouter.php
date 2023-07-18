@@ -53,7 +53,7 @@
          * @param array $method
          * @param callable $handler
          */
-        public static function route(string $path, array $methods, callable $handler) {
+        public static function route(string $path, array $methods, callable $handler, array $middlewares = []) {
 
             foreach ($methods as $method) {
                 // Call the method to check for duplicate paths
@@ -63,7 +63,8 @@
             $route = [
                 'path' => $path,
                 'methods' => $methods,
-                'handler' => $handler
+                'handler' => $handler,
+                'middlewares' => $middlewares
             ];
 
             // Convert route path to regular expression
@@ -155,6 +156,18 @@
 
                     // Get handler
                     $handler = $route['handler'];
+                    $middlewares = $route['middlewares'];
+
+                    // call middlewares
+                    foreach ($middlewares as $middleware) {
+                        if (is_callable($middleware)) { // function middleware
+                            $middleware();
+                        } else { // class middleware
+                            $middlewareClass = $middleware[0];
+                            $middlewareMethod = $middleware[1];
+                            $middlewareClass::$middlewareMethod();
+                        }
+                    }
 
                     // Combine route params and additional params
                     $params = [];
