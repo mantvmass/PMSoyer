@@ -160,8 +160,8 @@
 
                     // call middlewares
                     foreach ($middlewares as $middleware) {
-                        if (is_callable($middleware)) { // function middleware
-                            $middleware();
+                        if (is_callable($middleware[0])) { // function middleware
+                            $middleware[0]();
                         } else { // class middleware
                             $middlewareClass = $middleware[0];
                             $middlewareMethod = $middleware[1];
