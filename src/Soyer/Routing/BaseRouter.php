@@ -155,36 +155,21 @@
                         return !is_numeric($key);
                     }, ARRAY_FILTER_USE_KEY);
 
-                    // Get handler
+                    // get handler and middlewares
                     $handler = $route['handler'];
                     $middlewares = $route['middlewares'];
 
-                    // Combine route params and additional params
+                    // combine route params and additional params
                     $params = [];
                     $params = array_merge($matches, $params);
                     $params = self::getParams($params, $handler);
 
-                    // // call middlewares
-                    // foreach ($middlewares as $middleware) {
-                    //     // if (is_callable($middleware[0])) { $middleware[0](); } else { $middlewareClass = $middleware[0]; $middlewareMethod = $middleware[1]; $middlewareClass::$middlewareMethod(); }
-                    //     $middleware::handle(function() use ($handler, $params) { // class::method(Closure $next)
-                    //         $handler(...$params);
-                    //         die(); // call handler and stop process
-                    //     });
-                    // }
-
-                    // // Call the route handler function with the params
-                    // return $handler(...$params);
-
+                    // call middlewares and run handler
                     $active = new ActiveMiddleware($middlewares);
-                    $active -> setTarget($handler);
-                    $active -> run($params);
-
+                    return $active -> run($handler, $params);
                 }
             }
             self::handleException(404, 'Not Found');
         }
-
     }
-
 ?>
