@@ -168,6 +168,7 @@
                         // if (is_callable($middleware[0])) { $middleware[0](); } else { $middlewareClass = $middleware[0]; $middlewareMethod = $middleware[1]; $middlewareClass::$middlewareMethod(); }
                         $middleware::handle(function() use ($handler, $params) { // class::method(Closure $next)
                             $handler(...$params);
+                            die(); // call handler and stop process
                         });
                     }
 
