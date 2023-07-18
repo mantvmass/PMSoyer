@@ -3,9 +3,10 @@
 
     namespace Soyer\Routing;
 
-
+    use Soyer\Routing\Middleware\ActiveMiddleware;
     use ReflectionFunction;
     use Exception;
+
 
 
     /**
@@ -163,17 +164,22 @@
                     $params = array_merge($matches, $params);
                     $params = self::getParams($params, $handler);
 
-                    // call middlewares
-                    foreach ($middlewares as $middleware) {
-                        // if (is_callable($middleware[0])) { $middleware[0](); } else { $middlewareClass = $middleware[0]; $middlewareMethod = $middleware[1]; $middlewareClass::$middlewareMethod(); }
-                        $middleware::handle(function() use ($handler, $params) { // class::method(Closure $next)
-                            $handler(...$params);
-                            die(); // call handler and stop process
-                        });
-                    }
+                    // // call middlewares
+                    // foreach ($middlewares as $middleware) {
+                    //     // if (is_callable($middleware[0])) { $middleware[0](); } else { $middlewareClass = $middleware[0]; $middlewareMethod = $middleware[1]; $middlewareClass::$middlewareMethod(); }
+                    //     $middleware::handle(function() use ($handler, $params) { // class::method(Closure $next)
+                    //         $handler(...$params);
+                    //         die(); // call handler and stop process
+                    //     });
+                    // }
 
-                    // Call the route handler function with the params
-                    return $handler(...$params);
+                    // // Call the route handler function with the params
+                    // return $handler(...$params);
+
+                    $active = new ActiveMiddleware($middlewares);
+                    $active -> setTarget($handler);
+                    $active -> run($params);
+
                 }
             }
             self::handleException(404, 'Not Found');
