@@ -165,21 +165,14 @@
 
                     // call middlewares
                     foreach ($middlewares as $middleware) {
-                        // if (is_callable($middleware[0])) { // function middleware
-                        //     $middleware[0]();
-                        // } else { // class middleware
-                        //     $middlewareClass = $middleware[0];
-                        //     $middlewareMethod = $middleware[1];
-                        //     $middlewareClass::$middlewareMethod();
-                        // }
-
-                        $middleware::handle($handler(...$params)); // call handle from middleware and send handler function
+                        // if (is_callable($middleware[0])) { $middleware[0](); } else { $middlewareClass = $middleware[0]; $middlewareMethod = $middleware[1]; $middlewareClass::$middlewareMethod(); }
+                        $middleware::handle(function() use ($handler, $params) { // class::method(Closure $next)
+                            $handler(...$params);
+                        });
                     }
 
                     // Call the route handler function with the params
-                    $handler(...$params);
-
-                    return;
+                    return $handler(...$params);
                 }
             }
             self::handleException(404, 'Not Found');
