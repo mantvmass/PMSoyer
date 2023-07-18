@@ -92,7 +92,7 @@
          * @param int $statusCode
          * @param string $message
          */
-        private static function handleException(int $statusCode, string $message) {
+        public static function handleException(int $statusCode, string $message) {
             if (isset(self::$errorHandlers[$statusCode])) {
                 $handler = self::$errorHandlers[$statusCode];
                 http_response_code($statusCode);
