@@ -1,8 +1,14 @@
 <?php
 
+    /**
+     * Copyright 2023 mantvmass
+     * 
+     * 
+     */
+
+
     use Soyer\PMSoyer as app;
     use Soyer\View\Template;
-    use Soyer\View\TemplateFileSystemLoader;
 
     if (!function_exists('render_template')) {
         /**
@@ -14,9 +20,9 @@
 
         function render_template(string $name, array $context = []){
             $templates_path = isset(app::$config["TEMPLATES_PATH"]) ? app::$config["TEMPLATES_PATH"] : "templates/";
-            $loader = new TemplateFileSystemLoader(__DIR__ . "/../../../../../../" . $templates_path);
-            $page = new Template($loader);
-            echo $page -> render($name, $context);
+            $twig = Template::create(__DIR__ . "/../../../../../../" . $templates_path);
+            $template = $twig->load($name);
+            echo $template->render($context);
             return;
         }
     }
