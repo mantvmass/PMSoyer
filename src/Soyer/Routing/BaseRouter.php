@@ -1,11 +1,18 @@
 <?php
 
+    /**
+     * Copyright 2023 mantvmass
+     * 
+     * 
+     */
+    
 
     namespace Soyer\Routing;
 
-
+    use Soyer\Routing\Middleware\ActiveMiddleware;
     use ReflectionFunction;
     use Exception;
+
 
 
     /**
@@ -154,35 +161,21 @@
                         return !is_numeric($key);
                     }, ARRAY_FILTER_USE_KEY);
 
-                    // Get handler
+                    // get handler and middlewares
                     $handler = $route['handler'];
                     $middlewares = $route['middlewares'];
 
-                    // call middlewares
-                    foreach ($middlewares as $middleware) {
-                        if (is_callable($middleware[0])) { // function middleware
-                            $middleware[0]();
-                        } else { // class middleware
-                            $middlewareClass = $middleware[0];
-                            $middlewareMethod = $middleware[1];
-                            $middlewareClass::$middlewareMethod();
-                        }
-                    }
-
-                    // Combine route params and additional params
+                    // combine route params and additional params
                     $params = [];
                     $params = array_merge($matches, $params);
                     $params = self::getParams($params, $handler);
 
-                    // Call the route handler function with the params
-                    $handler(...$params);
-
-                    return;
+                    // call middlewares and run handler
+                    $active = new ActiveMiddleware($middlewares);
+                    return $active -> run($handler, $params);
                 }
             }
             self::handleException(404, 'Not Found');
         }
-
     }
-
 ?>

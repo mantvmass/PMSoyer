@@ -1,15 +1,24 @@
 <?php
 
-    namespace Soyer;
+    /**
+     * Copyright 2023 mantvmass
+     * 
+     * 
+     */
 
+
+    namespace Soyer;
     use Soyer\Routing\BaseRouter;
 
 
-    // This class use BaseRouter
+    /**
+     * This is application class
+     */
     class PMSoyer extends BaseRouter{
 
+        
         /**
-         * The config application
+         * This is config variable for application
          * 
          * @var array|null
          */

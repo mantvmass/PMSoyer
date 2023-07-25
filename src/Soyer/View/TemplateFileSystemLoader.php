@@ -1,11 +1,19 @@
 <?php
 
-namespace Soyer\View;
+    /**
+     * Copyright 2023 mantvmass
+     * 
+     * 
+     */
 
-use Twig\Loader\FilesystemLoader;
 
-class TemplateFileSystemLoader extends FilesystemLoader {
+    namespace Soyer\View;
 
-    // This class use Twig Template Engine
+    use Twig\Loader\FilesystemLoader;
 
-}
+    
+    class TemplateFileSystemLoader extends FilesystemLoader {
+
+        // This class use Twig Template Engine
+
+    }
